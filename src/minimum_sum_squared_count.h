@@ -25,16 +25,28 @@ int minimum_sum_squared_count (const T& text, int n) {
         pq.push(cnt);
     }
 
-    while (n-- && !pq.empty()) {
+    while (!pq.empty()) {
         int maxi = pq.top();
-        if (maxi == 0) break;
         pq.pop();
-        pq.push(maxi - 1);
+
+        if (maxi == 0) break;
+        if (n <= maxi) {
+            pq.push(maxi - n);
+            break;
+        }
+        else n -= maxi;
     }
 
-    int aux, result = 0;
+//    while (n-- && !pq.empty()) {
+//        int maxi = pq.top();
+//        if (maxi == 0) break;
+//        pq.pop();
+//        pq.push(maxi - 1);
+//    }
+
+    int result = 0;
     while (!pq.empty()) {
-        aux = pq.top();
+        int aux = pq.top();
         result += (aux) * (aux);
         pq.pop();
     }
