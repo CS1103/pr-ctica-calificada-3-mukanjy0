@@ -22,7 +22,6 @@ int minimum_sum_squared_count (const T& text, int n) {
 
     priority_queue<int> pq;
     for (const auto& [c, cnt] : um) {
-        cout << c << ' ' << cnt << '\n';
         pq.push(cnt);
     }
 
